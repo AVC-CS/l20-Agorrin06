@@ -10,22 +10,42 @@ using namespace std;
 // Compare adjacent pairs, swap if left > right
 void bubble(vector<int>& numbers, int N)
 {
-    // TODO: Implement one pass over elements [0..N-1], swapping adjacent pairs if out of order
+    for (int i = 0; i < N - 1; i++)
+    {
+        if (numbers[i] > numbers[i + 1])
+        {
+            swap(numbers[i], numbers[i + 1]);
+        }
+    }
 }
 
 // Selection: find index of minimum from index start to end of array
 // Returns the index of the minimum value
 int selection(vector<int>& numbers, int start, int N)
 {
-    // TODO: Find and return the index of the minimum element in [start..N-1]
-    return start;
+    int minIndex = start;
+
+    for (int i = start + 1; i < N; i++)
+    {
+        if (numbers[i] < numbers[minIndex])
+        {
+            minIndex = i;
+        }
+    }
+    return minIndex;
 }
 
 // Insertion: insert element at index idx into sorted portion [0..idx-1]
 // Shift larger elements right to make room
 void insertion(vector<int>& numbers, int idx)
 {
-    // TODO: Insert numbers[idx] into its correct position in [0..idx-1]
+    int value = numbers[idx];
+    int i = idx - 1;
+
+    while (i >= 0 && numbers[i] > value)
+    {
+        numbers[i + 1] = value;
+    }
 }
 
 // ============================================================
